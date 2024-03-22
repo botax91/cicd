@@ -7,5 +7,5 @@ parameters:
         - %currentWorkingDirectory%/wp-content/*
         - %currentWorkingDirectory%/wp-admin/*
         - %currentWorkingDirectory%/wp-includes/*
-	ignoreErrors:
-		- '#Could not execute .NET AssemblyAnalyzer#'
+    ignoreErrors:
+	- '#Could not execute .NET AssemblyAnalyzer#'
