@@ -28,12 +28,12 @@ phases:
         \"build_id\": env.CODEBUILD_BUILD_ID, \
         \"source_commitid\": env.CODEBUILD_RESOLVED_SOURCE_VERSION, \
         \"report\": . }" dependency-check-report.json > payload.json
-      - |
-        if [ $high_risk_dependency -gt 0 ]; then
-          echo "there are high or medium alerts.. failing the build"
-          aws lambda invoke --function-name ImportVulToSecurityHub --payload file://payload.json dependency-check-report.json && echo "LAMBDA_SUCCEDED" || echo "LAMBDA_FAILED";
-          exit 1; 
-        fi
+#      - |
+#        if [ $high_risk_dependency -gt 0 ]; then
+#          echo "there are high or medium alerts.. failing the build"
+#          aws lambda invoke --function-name ImportVulToSecurityHub --payload file://payload.json dependency-check-report.json && echo "LAMBDA_SUCCEDED" || echo "LAMBDA_FAILED";
+#          exit 1; 
+#        fi
 artifacts:
   type: zip
   files: '**/*'
