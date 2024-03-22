@@ -21,7 +21,7 @@ phases:
         if [ $phpstan_fileerrors -gt 0 ]; then      
           jq \
           "{ \"messageType\": \"CodeScanReport\", \"reportType\": \"PHPStan\", \
-          \"createdAt\": $(date +\"%Y-%m-%dT%H:%M:%S.%3NZ\"), \"source_repository\": env.CODEBUILD_SOURCE_REPO_URL", \
+          \"createdAt\": $(date +\"%Y-%m-%dT%H:%M:%S.%3NZ\"), \"source_repository\": env.CODEBUILD_SOURCE_REPO_URL, \
           \"source_branch\": env.CODEBUILD_SOURCE_VERSION, \
           \"build_id\": env.CODEBUILD_BUILD_ID, \
           \"source_commitid\": env.CODEBUILD_RESOLVED_SOURCE_VERSION, \
