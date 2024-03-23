@@ -12,10 +12,10 @@ phases:
   build:
     commands:
       - vendor/bin/phpstan analyse -c $CODEBUILD_SRC_DIR/phpstan.neon --error-format=json --level=1 --memory-limit=1G $CODEBUILD_SRC_DIR > vendor/phpstan-results.json
-      - cat vendor/phpstan-results.json
       - echo "phpstan scan completed. Analysing the results......"
   post_build:
     commands:
+      - cat vendor/phpstan-results.json
       - phpstan_fileerrors=$(cat vendor/phpstan-results.json | jq -r '.totals.file_errors')
       - echo "phpstan errors count is "  $phpstan_fileerrors
       - | 
