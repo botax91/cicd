@@ -11,8 +11,6 @@ phases:
       - echo "completed installing phpstan"
   build:
     commands:
-      - ls -al
-      - echo $CODEBUILD_SRC_DIR
       - vendor/bin/phpstan analyse -c $CODEBUILD_SRC_DIR/phpstan.neon --error-format=json --level=1 --memory-limit=1G $CODEBUILD_SRC_DIR > vendor/phpstan-results.json
       - cat vendor/phpstan-results.json
       - echo "phpstan scan completed. Analysing the results......"
