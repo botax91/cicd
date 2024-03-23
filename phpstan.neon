@@ -3,9 +3,8 @@ parameters:
     reportUnmatchedIgnoredErrors: false
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
-    level: 8
-    paths:
-        - %currentWorkingDirectory%
+    excludes_analyse:
+        - %currentWorkingDirectory%/vendor/*
     ignoreErrors:
         - '#readObjectFromPhpNode\(\) should be compatible with#'
         - '#readObjectFromReflection\(\) should be compatible with#'
