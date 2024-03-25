@@ -8,15 +8,13 @@ phases:
   pre_build:
     commands:
       - echo "owasp zap url " $OwaspZapApiKey
-      - export OwaspZapURL=$OwaspZapURLName
-      - export ApplicationURL=$ApplicationURLForDASTScan
       - scanid=$(curl "$OwaspZapURL/JSON/ascan/action/scan/?apikey=$OwaspZapApiKey&recurse=true&inScopeOnly=&scanPolicyName=&method=&postData=&contextId=&url=$ApplicationURL" | jq -r '.scan')
       - echo "scan id is " $scanid
       - |
         stat=50;
         while [ "$stat" != 100 ]; do
           # stat=$(curl "$OwaspZapURL/JSON/ascan/view/status/?apikey=$OwaspZapApiKey&scanId=$scanid" | jq -r '.status');
-          stat=$(curl "$OwaspZapURL/JSON/ascan/view/status/?apikey=$OwaspZapApiKey&scanId=scanid" | jq -r '.status');
+          stat=$(curl "$OwaspZapURL/JSON/ascan/view/status/?apikey=$OwaspZapApiKey&scanId=scanid" | jq -r '.status')=100;
           echo "OWASP ZAP scan status is $stat"
           echo "OWASP Zap analysis status is in progress...";
           sleep 5;
