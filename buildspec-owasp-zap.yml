@@ -8,6 +8,8 @@ phases:
   pre_build:
     commands:
       - echo "owasp zap url " $OwaspZapApiKey
+      - export OwaspZapURL=$OwaspZapURLName
+      - export ApplicationURL=$ApplicationURLForDASTScan
       - scanid=$(curl "$OwaspZapURL/JSON/ascan/action/scan/?apikey=$OwaspZapApiKey&recurse=true&inScopeOnly=&scanPolicyName=&method=&postData=&contextId=&url=$ApplicationURL" | jq -r '.scan')
       - echo "scan id is " $scanid
       - |
